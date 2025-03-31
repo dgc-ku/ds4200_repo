@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-3c09ad77f962a55f93aef8fd72386422"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Injury Severity", "type": "nominal"}, "tooltip": [{"field": "Weather", "type": "nominal"}, {"field": "Injury Severity", "type": "nominal"}, {"field": "Count", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0}, "field": "Weather", "title": "Weather", "type": "nominal"}, "xOffset": {"field": "Injury Severity", "type": "nominal"}, "y": {"field": "Count", "title": "Count", "type": "quantitative"}}, "height": 500, "title": "Top 4 Weather Types by Injury Count", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-3c09ad77f962a55f93aef8fd72386422": [{"Weather": "clear", "Injury Severity": "possible injury", "Count": 12676}, {"Weather": "clear", "Injury Severity": "suspected minor injury", "Count": 9403}, {"Weather": "raining", "Injury Severity": "possible injury", "Count": 2211}, {"Weather": "cloudy", "Injury Severity": "possible injury", "Count": 2121}, {"Weather": "raining", "Injury Severity": "suspected minor injury", "Count": 1531}, {"Weather": "cloudy", "Injury Severity": "suspected minor injury", "Count": 1332}, {"Weather": "clear", "Injury Severity": "suspected serious injury", "Count": 1127}, {"Weather": "rain", "Injury Severity": "suspected minor injury", "Count": 184}, {"Weather": "cloudy", "Injury Severity": "suspected serious injury", "Count": 180}, {"Weather": "rain", "Injury Severity": "possible injury", "Count": 165}, {"Weather": "snow", "Injury Severity": "possible injury", "Count": 143}, {"Weather": "raining", "Injury Severity": "suspected serious injury", "Count": 139}, {"Weather": "clear", "Injury Severity": "fatal injury", "Count": 134}, {"Weather": "snow", "Injury Severity": "suspected minor injury", "Count": 120}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
